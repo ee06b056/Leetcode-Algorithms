@@ -31,5 +31,29 @@ let arrWithoutIndex = function (arr, index) {
     return res;
 };
 
+// swap solution + recursive
+var permute2 = function (nums) {
+    function _permute (nums, start) {
+        if (start == nums.length - 1) {
+            ans.push(nums.slice());
+        }
+        for (let i = start; i < nums.length; i++) {
+            swap(nums, start, i);
+            _permute(nums, start + 1);
+            swap(nums, start, i);
+        }
+    }
+    let ans = [];
+    _permute(nums, 0);
+    return ans;
+};
+
+let swap = function (nums, i, j) {
+    let temp = nums[i];
+    nums[i] = nums[j];
+    nums[j] = temp;
+};
+
+
 let nums = [1, 2, 3, 4];
-console.log(permute(nums));
+console.log(permute2(nums));
