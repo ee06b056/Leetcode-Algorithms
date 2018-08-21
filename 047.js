@@ -7,10 +7,12 @@ var permuteUnique = function(nums) {
         if (start == nums.length - 1) {
             ans.push(nums.slice());
         }
+        let used = new Set();
         for (let i = start; i < nums.length; i++) {
-            if (i != start && nums[i] == nums[start]) {
+            if (used.has(nums[i])) {
                 continue;
             } else {
+                used.add(nums[i]);
                 swap(nums, start, i);
                 _permuteUnique(nums, start + 1);
                 swap(nums, start, i);
@@ -28,5 +30,5 @@ let swap = function (nums, i, j) {
     nums[j] = temp;
 };
 
-let nums = [1, 1, 2,3];
+let nums = [1, 1, 2, 2];
 console.log(permuteUnique(nums));
