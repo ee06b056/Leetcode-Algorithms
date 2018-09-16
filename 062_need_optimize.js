@@ -22,4 +22,17 @@ var uniquePaths = function(m, n) {
     return matrix[n - 1][m - 1];
 };
 
-console.log(uniquePaths(3, 2));
+
+var uniquePaths2 = function (m, n) {
+    let row = Array(m).fill(1);
+    for (let i = 1; i < n; i++) {
+        for (let j = 1; j < m; j++) {
+            row[j] = row[j - 1] + row[j];
+        }
+    }
+    return row[row.length - 1];
+}
+
+
+
+console.log(uniquePaths2(3, 2));
