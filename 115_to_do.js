@@ -26,7 +26,7 @@ var numDistinct = function(s, t) {
 
 
 var numDistinct = function (s, t) {
-    
+    let dp = 
 };
 
 let s = 'babgbag', t = 'bag';

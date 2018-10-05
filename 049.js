@@ -3,20 +3,25 @@
  * @return {string[][]}
  */
 var groupAnagrams = function(strs) {
-    
-};
-
-function matchAnagram (str1, str2) {
-    if (str1.length != str2) {
-        return false;
-    }
-    let chars = new Map();
-    for (let char of str1) {
-        if (chars.has(char)) {
-            chars.set(char, chars.get(char) + 1);
+    let map = new Map(), ans = [];
+    for (let word of strs) {
+        let key = convertWordToCharString(word);
+        if (map.has(key)) {
+            map.get(key).push(word);
         } else {
-            chars.set(cahr,1);
+            map.set(key, [word,]);
         }
     }
-    for (let char )
+    map.forEach((value) => {
+        ans.push(value);
+    });
+    return ans;
+};
+
+function convertWordToCharString (word) {
+    let alphbts = new Array(26).fill(0);
+    for (let i = 0; i < word.length; i++) {
+        alphbts[word.charCodeAt(i) - 97]++;
+    }
+    return alphbts.join('');
 }
